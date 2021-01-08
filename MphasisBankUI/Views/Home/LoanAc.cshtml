@@ -1,0 +1,36 @@
+﻿@model Bussiness_Entities.Loan_Account_Entites
+@{
+    ViewBag.Title = "LoanAc";
+    Layout = "~/Views/Shared/MphasisBankUI.cshtml";
+}
+
+<h2>LoanAc</h2>
+<form method="post">
+
+    <table>
+        <tr>
+            <td>Customer Name</td>
+            <td> @Html.TextBoxFor(c => c.CustId, new { @placeholder = "Enter Name" }) </td>
+            <td>@Html.ValidationMessageFor(c => c.CustId) </td>
+        </tr>
+        <tr>
+            <td>Loan Amount</td>
+            <td>   @Html.TextBoxFor(c => c.lnAmount, new { @type = "Enter Amount" }) </td>
+        </tr>
+        <tr>
+            <td>Tenure Months</td>
+            <td>   @Html.TextBoxFor(c => c.Tenure, new { @type = "Enter Years" }) </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="ADDLOAN" />  </td>
+
+        </tr>
+
+        <tr></tr>
+        <tr></tr>
+
+    </table>
+
+</form>
+@ViewData["a"]

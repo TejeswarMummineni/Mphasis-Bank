@@ -1,0 +1,23 @@
+﻿@model Bussiness_Entities.EmployeeEntites
+
+@{
+    ViewBag.Title = "EmployeeUI";
+    Layout = "~/Views/Shared/MphasisBankUI.cshtml";
+}
+
+<h2>EmployeeUI</h2>
+
+<form method="post">
+    <table>
+        <tr>
+            <td>Enter Pan Number</td>
+            <td> @Html.TextBoxFor(c => c.Pan ) </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Pan" />
+            </td>
+        </tr>
+    </table>
+</form>
+@ViewData["a"]

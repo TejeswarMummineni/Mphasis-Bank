@@ -1,0 +1,31 @@
+﻿@model Bussiness_Entities.EmployeeEntites
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Views/Shared/MphasisBankUI.cshtml";
+}
+
+<h2>AddEmployee</h2>
+<form method="post">
+    <table>
+        <tr>
+            <td>Employee Name</td>
+            <td> @Html.TextBoxFor(c => c.EmpName, new { @placeholder = "Enter Name" }) </td>
+            <td>@Html.ValidationMessageFor(c => c.EmpName) </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>  @Html.PasswordFor(c => c.Password, new { @type = "password" }) </td>
+            <td>@Html.ValidationMessageFor(c => c.Password) </td>
+        </tr>
+        <tr>
+            <td>PAN Number</td>
+            <td>   @Html.TextBoxFor(c => c.Pan, new { @placeholder = "Enter PanNumber" }) </td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" />  </td>
+
+        </tr>
+    </table>
+</form>

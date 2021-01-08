@@ -1,0 +1,22 @@
+﻿@model Bussiness_Entities.CustomerEntities
+@{
+    ViewBag.Title = "RemoveCustomer";
+    Layout = "~/Views/Shared/MphasisBankUI.cshtml";
+}
+
+<h2>RemoveCustomer</h2>
+
+<form method="post">
+    <table>
+        <tr>
+            <td>Enter CustomerID</td>
+            <td> @Html.TextBoxFor(c => c.CustId) </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Remove Customer"/>
+            </td>
+        </tr>
+    </table>
+</form>
+@ViewData["a"]

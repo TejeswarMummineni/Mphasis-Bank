@@ -1,0 +1,23 @@
+﻿@model Bussiness_Entities.CustomerEntities
+@{
+    ViewBag.Title = "DeActivateCustomer";
+    Layout = "~/Views/Shared/MphasisBankUI.cshtml";
+}
+
+<h2>DeActivateCustomer</h2>
+
+<form method="post">
+    <table>
+        <tr>
+            <td>Customer Id</td>
+            <td> @Html.TextBoxFor(c => c.CustId, new { @placeholder = "Enter CustomerId" }) </td>
+            <td>@Html.ValidationMessageFor(c => c.CustId) </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="DeActivateCustome" />  </td>
+
+        </tr>
+    </table>
+</form>
+@ViewData["msg"]

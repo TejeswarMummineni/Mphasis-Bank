@@ -1,0 +1,32 @@
+﻿@model Bussiness_Entities.Loan_Transcation_Entites
+@{
+    ViewBag.Title = "LoanTrans";
+    Layout = "~/Views/Shared/MphasisBankUI.cshtml";
+}
+
+<h2>LoanTrans</h2>
+<form method="post">
+
+    <table>
+        <tr>
+            <td>Loan AccountId</td>
+            <td> @Html.TextBoxFor(c => c.LnAccountid, new { @placeholder = "Enter Name" }) </td>
+            <td>@Html.ValidationMessageFor(c => c.LnAccountid) </td>
+        </tr>
+        <tr>
+            <td>Amount to Pay</td>
+            <td> @Html.TextBoxFor(c => c.Amount, new { @type = "Enter Amount" }) </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="PAYLOAN" />  </td>
+
+        </tr>
+
+        <tr></tr>
+        <tr></tr>
+
+    </table>
+
+</form>
+@ViewData["a"]

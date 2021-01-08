@@ -1,0 +1,35 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Contents/Bootstrap/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        
+    </header>
+    <nav>
+
+       
+       
+        
+            @Html.ActionLink("OPEN", "OPEN", new { }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("CLOSE", "CLOSE", new { }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("TRANSACTION", "AddTranscation", new { }, new { @class = "btn btn-primary" })
+    
+
+    </nav>
+    <article>
+        <div>
+            @RenderBody()
+        </div>
+    </article>
+
+    <footer>
+    </footer>
+
+</body>
+</html>

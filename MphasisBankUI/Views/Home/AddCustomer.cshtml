@@ -1,0 +1,81 @@
+﻿
+@model Bussiness_Entities.CustomerEntities
+@{
+    ViewBag.Title = "AddCustomer";
+    Layout = "~/Views/Shared/MphasisBankUI.cshtml";
+    <link href="~/Content/AddCust.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+}
+
+<h1>Customer Details Registration Form</h1>
+
+    @using (Html.BeginForm("AddCustomer", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.CustName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(c => c.CustName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(c => c.CustName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(c => c.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(c => c.Password)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(c => c.ConfirmPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(c => c.ConfirmPassword)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.Dob, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(c => c.Dob, new { @class = "form-control", @type = "date" })
+                @Html.ValidationMessageFor(c => c.Dob)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.Pan, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(c => c.Pan, new { @class = "form-control" })
+                @Html.ValidationMessageFor(c => c.Pan)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(c => c.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(c => c.Email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Inital Amount</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(c => c.balance, new { @class = "form-control", @type = "Number" })
+                <br />
+                @Html.ValidationMessageFor(c => c.balance)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-primary" value="SUBMIT" />
+            </div>
+        </div>
+        <div >
+            @Html.ValidationSummary(false, "Please fix the following error and then Submit the Form")
+        </div>
+    }
+    @ViewData["a"]
+

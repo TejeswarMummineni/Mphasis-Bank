@@ -1,0 +1,40 @@
+﻿@model Bussiness_Entities.LoginEntites
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/MphasisBankUI.cshtml";
+
+    <link href="~/Content/log.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+}
+
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="form-group"><label class="col-md-2 control-label" style="color:forestgreen" id="i">Login</label></div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.Username, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+
+                @Html.TextBoxFor(c => c.Username, new { @class = "form-control" })
+                @Html.ValidationMessageFor(c => c.Username)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(c => c.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(c => c.Password)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-primary" value="LOGIN" style="align-content:center" />
+            </div>
+        </div>
+        <div style="color:Red" class="col-md-2 control">
+            @ViewData["err"]
+        </div>
+    }
+
