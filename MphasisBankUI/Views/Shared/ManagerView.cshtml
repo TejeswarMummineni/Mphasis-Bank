@@ -1,0 +1,39 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Contents/Bootstrap/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header style="height:60px; background-color:coral">
+        @if (Session["user"] != null)
+        {
+            @Html.ActionLink("Add-Employee", "AddEmployee", new { }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Create-CustomerA/C", "OPEN", new { }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("DisableCustomerA/C", "CLOSE", new { }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("View-Transcations", "ViewTrans", new { }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Deposite/WithDrawn", "AddTranscation", new { }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Create-A/C", "LoanAc", new { }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Pay-Emi", "LoanTrans", new { }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Logout", "Logout", new { }, new { @class = "btn btn-primary" })
+        }
+    </header>
+    <nav>
+
+    </nav>
+    <article>
+        <div>
+            @RenderBody()
+        </div>
+    </article>
+
+    <footer style="height:80px; background-color:cornflowerblue ">
+        <h2>©</h2>
+        <h6>@DateTime.Now</h6>
+    </footer>
+
+</body>
+</html>

@@ -139,7 +139,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <None Include="packages.config" />
-    <Content Include="Views\Shared\MphasisBankUI.cshtml" />
     <Content Include="Views\Home\AddCustomer.cshtml" />
     <Content Include="Views\Home\AddEmployee.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
@@ -153,6 +152,9 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Views\Home\ViewTrans.cshtml" />
+    <Content Include="Views\Shared\EmployeeView.cshtml" />
+    <Content Include="Views\Shared\CustomerView.cshtml" />
+    <Content Include="Views\Shared\ManagerView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

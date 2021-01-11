@@ -17,6 +17,8 @@ namespace MphasisBankUI
         protected void Session_Start()
         {
             Session["user"] = null;
+            Session["master"] = null;
+            Session["temp"] = null;
         }
     }
 }

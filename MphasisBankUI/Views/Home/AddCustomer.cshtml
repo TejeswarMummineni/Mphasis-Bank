@@ -2,7 +2,18 @@
 @model Bussiness_Entities.CustomerEntities
 @{
     ViewBag.Title = "AddCustomer";
-    Layout = "~/Views/Shared/MphasisBankUI.cshtml";
+    if (Session["master"] == "ManagerView")
+    {
+        Layout = "~/Views/Shared/ManagerView.cshtml";
+    }
+    else if (Session["master"] == "EmployeeView")
+    {
+        Layout = "~/Views/Shared/EmployeeView.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/CustomerView.cshtml";
+    }
     <link href="~/Content/AddCust.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>

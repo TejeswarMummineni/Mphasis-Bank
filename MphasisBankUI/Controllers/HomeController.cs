@@ -37,37 +37,53 @@ namespace MphasisBankUI.Controllers
         [HttpPost]
         public ActionResult Login(LoginEntites log)
         {
+            
             LoginBL lb = new LoginBL();
             int res = lb.Loginvalidate(log);
             if (res==1)
             {
                 Session["user"] = log.Username;
-               
+                Session["master"] = "EmployeeView";
+                return View("Login", "EmployeeView");
+                
             }
             else if (res == 2)
             {
                 Session["user"] = log.Username;
+                Session["master"] = "CustomerView";
+                return View("Login", "CustomerView");
                 
             }
             else if (res == 3)
             {
                 Session["user"] = log.Username;
+                Session["master"] = "ManagerView";
+                return View("Login", "ManagerView");
                 
             }
             else
             {
                 ViewData["err"] = "Access Denied!! invalid credentials";
+                return View();
             }
-            return View();
+           
         }
 
         public ActionResult EmployeeUI()
         {
-            return View();
+            if (Session["user"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
         [HttpPost]
         public ActionResult EmployeeUI(string pan)
         {
+
             if (Session["user"] != null)
             {
                 int res1 = eb.ValidatePanCus(pan);
@@ -85,17 +101,25 @@ namespace MphasisBankUI.Controllers
                 {
                     return RedirectToAction("AddCustomer");
                 }
-               
+                return View();
             }
             else
             {
                 return RedirectToAction("Login");
             }
-            return View();
+            
         }
         public ActionResult AddCustomer()
         {
-            return View();
+            if (Session["user"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+
         }
         [HttpPost]
         public ActionResult AddCustomer(CustomerEntities ce)
@@ -114,12 +138,13 @@ namespace MphasisBankUI.Controllers
                 {
                     ViewData["a"] = "Invalid Details";
                 }
+                return View();
             }
             else
             {
                 return RedirectToAction("Login");
             }
-            return View();
+            
         }
        
         public ActionResult AddEmployee()
@@ -129,14 +154,21 @@ namespace MphasisBankUI.Controllers
         [HttpPost]
         public ActionResult AddEmployee(EmployeeEntites ce)
         {
-            if (ModelState.IsValid)
+            if (Session["user"] != null)
             {
+                if (ModelState.IsValid)
+                {
 
-                EmployeeBL eb = new EmployeeBL();
-                CustomEntities ob = eb.AddEmployee(ce);
-                
+                    EmployeeBL eb = new EmployeeBL();
+                    CustomEntities ob = eb.AddEmployee(ce);
+
+                }
+                return View();
             }
-            return View(ce);
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         public ViewResult AddTranscation()
@@ -146,7 +178,8 @@ namespace MphasisBankUI.Controllers
         [HttpPost]
         public ViewResult AddTranscation(TranscationEnties te)
         {
-          
+            if (Session["user"] != null)
+            {
                 TranscationBL tb = new TranscationBL();
                 int res = tb.AddTranscation(te);
 
@@ -159,27 +192,23 @@ namespace MphasisBankUI.Controllers
                 {
                     ViewData["a"] = "Inavalid Transcation";
                 }
-            
-            
 
-            return View();
+                return View();
+            }
+            else
+            {
+                return View();
+            }
         }
     
         public ViewResult ViewTrans(string Aid ,int?page)
         {
-            if (Aid == null)
-            {
-                Aid = "SB";
-                TranscationBL tb = new TranscationBL();
-                var res = tb.ViewTrans(Aid);
-                return View(res.ToList().ToPagedList(page ?? 1, 3));
-            }
-            else
-            {
-                TranscationBL tb = new TranscationBL();
-                var res = tb.ViewTrans(Aid);
-                return View(res.ToList().ToPagedList(page ?? 1, 3));
-            }
+           
+                    TranscationBL tb = new TranscationBL();
+                    var res = tb.ViewTrans(Aid);
+                    return View(res.ToList().ToPagedList(page ?? 1, 3));
+                
+            
         }
         public ActionResult DeActivateCustomer()
         {
@@ -188,7 +217,8 @@ namespace MphasisBankUI.Controllers
         [HttpPost]
         public ActionResult DeActivateCustomer(String custid)
         {
-
+            if (Session["user"] != null)
+            {
                 string Custid = custid;
                 int res = eb.DeActivateCustomer(Custid);
                 if (res > 0)
@@ -199,9 +229,14 @@ namespace MphasisBankUI.Controllers
                 {
                     ViewData["msg"] = "Please Check CustomerId";
                 }
-            
-           
-            return View();
+
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
         public ActionResult LoanAc()
         {
@@ -210,7 +245,8 @@ namespace MphasisBankUI.Controllers
         [HttpPost]
         public ActionResult LoanAc(Loan_Account_Entites le)
         {
-            
+            if (Session["user"] != null)
+            {
                 LoanBL lb = new LoanBL();
                 int res = lb.LoanAc(le);
                 if (res > 0)
@@ -222,7 +258,12 @@ namespace MphasisBankUI.Controllers
                 {
                     ViewData["a"] = "INValid CustomerDetails";
                 }
-            return View();
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
         public ActionResult LoanTrans()
         {
@@ -231,10 +272,11 @@ namespace MphasisBankUI.Controllers
         [HttpPost]
         public ActionResult LoanTrans(Loan_Transcation_Entites le)
         {
-           
-                
-            LoanBL lb = new LoanBL();
-            int res = lb.LoanTrans(le);
+
+            if (Session["user"] != null)
+            {
+                LoanBL lb = new LoanBL();
+                int res = lb.LoanTrans(le);
                 if (res > 0)
                 {
                     ViewData["a"] = "Paid Emi Sucessfull";
@@ -243,8 +285,18 @@ namespace MphasisBankUI.Controllers
                 else
                 {
                     ViewData["a"] = "INValid CustomerDetails";
-                }         
-            return View();
+                }
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+        public ActionResult Logout()
+        {
+            Session["user"] = null;
+            return RedirectToAction("Login");
         }
     }
 }

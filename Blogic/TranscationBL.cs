@@ -12,8 +12,10 @@ namespace Blogic
     {
         TranscationDAL ts = new TranscationDAL();
         public List<TranscationEnties> ViewTrans(string Aid)
-        {            
+        {
+           // List<TranscationEnties> li = new List<TranscationEnties>();
             return ts.ViewTrans(Aid);
+           // return li;
         }
             public TranscationEnties ViewTrans(DateTime StartDate, DateTime EndDate)
         {

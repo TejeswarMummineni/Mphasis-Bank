@@ -16,10 +16,11 @@ namespace DAL
         private MphasisBankEntities db;
         public List<TranscationEnties> ViewTrans(string Aid)
         {
-            
+            db = new MphasisBankEntities();
+
             List<TranscationEnties> li = new List<TranscationEnties>();
 
-                var res = db.Transcations.Where(x => x.Accountid.StartsWith(Aid) );
+                var res = db.Transcations.Where(x => x.Accountid.StartsWith(Aid) || Aid==null );
                 foreach (var item in res)
                 {
                     li.Add(new TranscationEnties()
